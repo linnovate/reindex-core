@@ -2,7 +2,11 @@ ARG PLUGINS_IMAGE_REF=""
 
 FROM node:alpine AS BUILDER
 
-RUN apk add curl vim
+RUN npm install -g node-gyp
+
+RUN apk update
+
+RUN apk add curl vim python make g++ python2 python3
 
 RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
 
